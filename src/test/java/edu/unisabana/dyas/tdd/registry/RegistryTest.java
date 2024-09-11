@@ -66,4 +66,19 @@ public class RegistryTest {
         Assert.assertNotSame(RegisterResult.DEAD, result1);
     }
 
+    /** Clase de equivalencia 6 (De Fromtera):
+     * Incluir género no válido
+     */
+    @Test
+    public void generoNoValido() { //No va a encontrar el género "Terranator"
+        Person persona = null;
+        String result = "";
+        try {
+            persona = new Person("Danna", 246, 20, Gender.valueOf("Terranator"), true);
+            result = registry.genderComprobation(persona);
+        } catch (IllegalArgumentException e) {
+            result = "El género no es válido";
+        }
+        AssertJUnit.assertEquals("El género no es válido", result);
+    }
 }
